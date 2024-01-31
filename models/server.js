@@ -28,6 +28,15 @@ class Server {
     middlewares() { // Ponts o intermediaris
         this.app.use( express.static( path.resolve( __dirname, '../public' ) ) );
 
+        const corsOptions = {
+            "origin": "*",
+            "methods": "GET,HEAD,PUT,PATCH,POST,DELETE",
+            "preflightContinue": false,
+            "optionsSuccessStatus": 204
+        };
+
+        this.app.use(cors(corsOptions));
+
         // cors
         // this.app.use( cors({
         //     origin: (origin, callback) => {
@@ -38,11 +47,11 @@ class Server {
         // }) ) ;
 
 
-        this.app.use(function(req, res, next) {
-            res.header("Access-Control-Allow-Origin", "*");
-            res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-            next();
-          });
+        // this.app.use(function(req, res, next) {
+        //     res.header("Access-Control-Allow-Origin", "*");
+        //     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+        //     next();
+        //   });
 
     }
 
