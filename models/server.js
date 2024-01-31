@@ -29,13 +29,21 @@ class Server {
         this.app.use( express.static( path.resolve( __dirname, '../public' ) ) );
 
         // cors
-        this.app.use( cors({
-            origin: (origin, callback) => {
-                console.log( "Origin: ", origin );
+        // this.app.use( cors({
+        //     origin: (origin, callback) => {
+        //         console.log( "Origin: ", origin );
                 
-                return callback(null, true)
-            }
-        }) ) ;
+        //         return callback(null, true)
+        //     }
+        // }) ) ;
+
+
+        this.app.use(function(req, res, next) {
+            res.header("Access-Control-Allow-Origin", "*");
+            res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+            next();
+          });
+
     }
 
 /*
