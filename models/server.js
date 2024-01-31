@@ -39,7 +39,7 @@ class Server {
         this.configSockets();
 
         this.server.listen( this.port, () => {
-            console.log( `server listening on port http://localhost:${this.port}` ) 
+            console.log( `(QMRcat) server listening on port http://localhost:${this.port}` ) 
         });
 
     }
